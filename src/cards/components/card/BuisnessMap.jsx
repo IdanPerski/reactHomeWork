@@ -53,3 +53,5 @@ export default function BuisnessMap({ center, zoom, address }) {
 
   return <div id="map" style={{ height: "100%", width: "100%" }} />;
 }
+
+/* test */
