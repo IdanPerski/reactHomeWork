@@ -65,7 +65,7 @@ const CardForm = ({
       />
       <Input
         name="webUrl"
-        label="web"
+        label="Web"
         error={errors.webUrl}
         onChange={onInputChange}
         data={data}
