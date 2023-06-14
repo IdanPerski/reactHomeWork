@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import ROUTES from "../routes/routesModel";
 
 const Error = ({ errorMessage }) => {
-  console.log(errorMessage);
   const handleLinkClick = () => {
     window.location.reload();
   };
