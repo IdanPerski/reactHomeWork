@@ -18,7 +18,7 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
 
   const { handleLogout } = useUsers();
 
-  const [userName, setUserName] = useState("guest");
+  const [userName, setUserName] = useState("Guest");
   const setName = async (userId) => {
     try {
       const { name } = await getUsersFromServer(userId);
@@ -30,17 +30,18 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
     }
   };
 
+  const onLogout = () => {
+    handleLogout();
+    onClose();
+    navigate(ROUTES.CARDS);
+    setName("Guest");
+  };
+
   useEffect(() => {
     if (user) {
       setName(user.id);
     }
   }, [user]);
-
-  const onLogout = () => {
-    handleLogout();
-    onClose();
-    navigate(ROUTES.CARDS);
-  };
   const { isDark, toggleDarkMode } = useTheme();
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("md"));
 

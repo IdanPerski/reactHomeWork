@@ -5,9 +5,7 @@ import CardBussinesComponent from "./card/CardBussinesComponent";
 import { arrayOf } from "prop-types";
 
 export default function Cards({ cards, handleDelete, onLike }) {
-  const handleEdit = (id) => {
-    console.log(`Card ${id} is Edited`);
-  };
+  const handleEdit = (id) => {};
   return (
     <>
       <Grid container spacing={2}>
