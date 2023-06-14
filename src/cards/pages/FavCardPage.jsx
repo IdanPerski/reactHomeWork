@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
-
 import { Container } from "@mui/material";
 import CardsFeedback from "../components/CardsFeedback";
 import useCards from "../hooks/useCards";
-
 import PageHeader from "../../components/PageHeader";
 import Spinner from "../../components/Spinner";
+import { useTheme } from "../../providers/ThemeProvider";
 
 export default function FavCardPage() {
+  const { isDark } = useTheme();
+
   const {
     value: { cards, error, isLoading, filterCards },
     handleGetFavCards,
@@ -31,7 +32,11 @@ export default function FavCardPage() {
   }
 
   if (cards == null) {
-    return <Typography variant="h5">Can't find cards!</Typography>;
+    return (
+      <Typography variant="h5" sx={{ color: isDark ? "white" : "#000" }}>
+        Can't find cards!
+      </Typography>
+    );
   }
 
   return (

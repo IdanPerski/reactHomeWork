@@ -9,6 +9,7 @@ import { Divider, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { getUsersFromServer } from "../../../../../user/services/usersApiService";
 import { useEffect, useState } from "react";
+import { useTheme } from "../../../../../providers/ThemeProvider";
 
 const Menu = ({ isOpen, anchorEl, onClose }) => {
   const { user } = useUser();
@@ -40,7 +41,7 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
     onClose();
     navigate(ROUTES.CARDS);
   };
-
+  const { isDark, toggleDarkMode } = useTheme();
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   return (
@@ -73,6 +74,13 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
           onClick={onClose}
           styles={{ display: { xs: "block", md: "none" } }}
         />
+
+        <MenuItem
+          onClick={toggleDarkMode}
+          styles={{ display: { xs: "block", md: "none" } }}
+        >
+          Dark mode
+        </MenuItem>
 
         {!user && (
           <>
