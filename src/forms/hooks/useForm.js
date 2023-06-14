@@ -24,7 +24,6 @@ const useForm = (initialForm, schema, handleSubmit) => {
   const handleChange = useCallback(
     ({ target }) => {
       const { name, value } = target;
-
       const errorMessage = validateProperty(target);
       if (errorMessage)
         setErrors((prev) => ({ ...prev, [name]: errorMessage }));
