@@ -4,15 +4,14 @@ import { Outlet } from "react-router-dom";
 import NavItem from "../routes/components/NavItem";
 
 import NestedNavBar from "./homeWork/NestedNavBar";
+import { useTheme } from "../providers/ThemeProvider";
 
 export default function SandBox() {
   const [showNavbar, setShowNavbar] = useState(false);
-
+  const { isDark } = useTheme();
   const toggleNavbar = () => {
-    console.log("clicked");
     setShowNavbar(!showNavbar);
   };
-
   return (
     <div>
       <AppBar
@@ -22,34 +21,16 @@ export default function SandBox() {
           zIndex: 1,
         }}
       >
-        <Toolbar>
-          <NavItem to="counter" label="Counter Page" sx={{ color: "black" }} />
-          <NavItem
-            to="mydetails"
-            label="My Details Page"
-            sx={{ color: "black" }}
-          />
-          <NavItem
-            to="password"
-            label="Password Page"
-            sx={{ color: "black" }}
-          />
-          <NavItem to="todo" label="Todo Page" sx={{ color: "black" }} />
-          <NavItem
-            to="firsteffect"
-            label="First Effect Page"
-            sx={{ color: "black" }}
-          />
-          <NavItem
-            to="countries"
-            label="countries Page"
-            sx={{ color: "black" }}
-          />
-          <NavItem to="render" label="render" sx={{ color: "black" }} />
+        <Toolbar sx={{ color: isDark ? "white" : "black" }}>
+          <NavItem to="counter" label="Counter Page" />
+          <NavItem to="mydetails" label="My Details Page" />
+          <NavItem to="password" label="Password Page" />
+          <NavItem to="todo" label="Todo Page" />
+          <NavItem to="firsteffect" label="First Effect Page" />
+          <NavItem to="countries" label="countries Page" />
+          <NavItem to="render" label="render" />
 
-          <Button onClick={toggleNavbar} sx={{ color: "black" }}>
-            Data Display
-          </Button>
+          <Button onClick={toggleNavbar}>Data Display</Button>
         </Toolbar>
       </AppBar>
       {showNavbar && <NestedNavBar />}

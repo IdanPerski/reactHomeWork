@@ -12,15 +12,12 @@ import MoreButton from "./MoreButton";
 import SearchBar from "./SearchBar";
 
 export default function RightNavBar() {
-  // const isMedium = useMediaQuery((theme) => theme.breakpoints.down("lg"));
-  // const [searchQuery, setSearchQuery] = useState("");
   const { isDark, toggleDarkMode } = useTheme();
   const { user } = useUser();
 
   return (
     <>
       <Box display={"inline-flex"}>
-        {/* <MySearchBar searchQuery={searchQuery} onSearch={setSearchQuery} /> */}
         <SearchBar />
         <Box
           sx={{
