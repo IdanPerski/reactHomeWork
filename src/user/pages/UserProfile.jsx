@@ -11,10 +11,10 @@ import { Navigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
 import { useUser } from "../providers/UseProvider";
 import initialEditForm from "../helpers/initialForms/initialEditForm";
-import loginSchema from "../models/joi-schema/loginSchema";
 import useUsers from "../hooks/useUsers";
 import DisplayUserDetails from "../components/DisplayUserDetails";
 import { useMediaQuery } from "@mui/material";
+import signupSchema from "../models/joi-schema/signupSchema";
 
 export default function UserProfile() {
   const { user } = useUser();
@@ -25,15 +25,9 @@ export default function UserProfile() {
     setTabValue(e.target.tabIndex);
   };
 
-  // useEffect(() => {
-
-  //   if (isMobileView) setTabValue(100);
-
-  // }, [isMobileView]);
-
   const { value, ...rest } = useForm(
     initialEditForm,
-    loginSchema,
+    signupSchema,
     handleUpdateUser,
   );
 
@@ -86,31 +80,6 @@ export default function UserProfile() {
                 <Tab tabIndex={2} label="Contact" />
               </Tabs>
 
-              {/* {tabValue === 100 ? (
-                <Box sx={{ p: 4 }}>
-                  <Grid
-                    container
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      height: "100%",
-                    }}
-                  >
-                    {
-                      <PersonalDetails
-                        onSubmit={rest.onSubmit}
-                        onReset={rest.handleReset}
-                        onFormChange={rest.validateForm}
-                        title={"Edit profile"}
-                        errors={value.errors}
-                        onInputChange={rest.handleChange}
-                        setData={rest.setData}
-                        data={value.data}
-                      />
-                    }
-                  </Grid>
-                </Box>
-              ) : null} */}
               {tabValue === 0 ? (
                 <Box sx={{ p: 4 }}>
                   <Grid

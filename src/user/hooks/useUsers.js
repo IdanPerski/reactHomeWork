@@ -68,15 +68,14 @@ const useUsers = () => {
 
   const handleUpdateUser = useCallback(
     async (user) => {
-      console.log("handleUpdateUser", user);
       try {
         setLoading(true);
         const userNormalize = normalizeUser(user);
         await editUser(user, userNormalize);
-        requestStatus(false, null, null, user);
-        // snack("success", "User has been successfully updated");
+
+        snack("success", "User has been successfully updated");
+        requestStatus(false, null, user);
       } catch (error) {
-        // requestStatus(false, error, null);
         console.log(error);
       }
     },
