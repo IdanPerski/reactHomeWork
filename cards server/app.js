@@ -333,7 +333,5 @@ app.put("/users/:user", (req, res) => {
   }
 });
 
-console.log(users);
-
 const PORT = 8181;
 app.listen(PORT, () => console.log(`server listening on port ${PORT}`));

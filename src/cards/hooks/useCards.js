@@ -100,6 +100,7 @@ export default function useCards() {
       snack("success", "The business card has been successfully updated");
     } catch (error) {
       requestStatus(false, error, null);
+      snack("failed", "business didn't updated");
     }
   }, []);
 
