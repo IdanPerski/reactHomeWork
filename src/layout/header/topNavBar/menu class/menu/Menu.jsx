@@ -76,12 +76,12 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
           styles={{ display: { xs: "block", md: "none" } }}
         />
 
-        <MenuItem
+        {/* <MenuItem
           onClick={toggleDarkMode}
           styles={{ display: { xs: "block", md: "none" } }}
         >
           Dark mode
-        </MenuItem>
+        </MenuItem> */}
 
         {!user && (
           <>
