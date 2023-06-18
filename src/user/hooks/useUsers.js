@@ -75,6 +75,7 @@ const useUsers = () => {
 
         snack("success", "User has been successfully updated");
         requestStatus(false, null, user);
+        setTimeout(() => navigate(ROUTES.MY_CARDS), 650);
       } catch (error) {
         console.log(error);
       }

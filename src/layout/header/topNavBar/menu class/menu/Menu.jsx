@@ -62,6 +62,14 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
     >
       <Box>
         <MenuItem sx={{ display: { xs: "block" } }}>Hello {userName}!</MenuItem>
+        {isSmall && (
+          <MenuItem
+            onClick={toggleDarkMode}
+            styles={{ display: { xs: "block", md: "none" } }}
+          >
+            Dark mode
+          </MenuItem>
+        )}
         <Divider />
         <MenuLink
           text="about"
@@ -75,13 +83,6 @@ const Menu = ({ isOpen, anchorEl, onClose }) => {
           onClick={onClose}
           styles={{ display: { xs: "block", md: "none" } }}
         />
-
-        {/* <MenuItem
-          onClick={toggleDarkMode}
-          styles={{ display: { xs: "block", md: "none" } }}
-        >
-          Dark mode
-        </MenuItem> */}
 
         {!user && (
           <>
