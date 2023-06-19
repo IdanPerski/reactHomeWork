@@ -11,9 +11,10 @@ import {
   getCards,
   getMyCards,
 } from "../services/cardApiService";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { getUser } from "../../user/services/localStorageService";
 import { useSnack } from "../../providers/SnackBarProvider";
+import ROUTES from "../../routes/routesModel";
 export default function useCards() {
   const [cards, setCards] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -23,6 +24,7 @@ export default function useCards() {
   const [query, setQuery] = useState("");
   const [searchParams] = useSearchParams();
   const [filterCards, setFilter] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => setQuery(searchParams.get("q") ?? ""), [searchParams]);
   useEffect(() => {
@@ -98,6 +100,7 @@ export default function useCards() {
       const card = await editCard(cardId, cardFromClient);
       requestStatus(false, null, null, card);
       snack("success", "The business card has been successfully updated");
+      setTimeout(() => navigate(ROUTES.MY_CARDS), 750);
     } catch (error) {
       requestStatus(false, error, null);
       snack("failed", "business didn't updated");
